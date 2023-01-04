@@ -1,13 +1,11 @@
 package com.springboot.Locationmanagementapi.exceptions;
 
 
-import com.springboot.Locationmanagementapi.ErrorType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice

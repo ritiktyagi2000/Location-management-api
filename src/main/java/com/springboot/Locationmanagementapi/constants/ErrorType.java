@@ -1,4 +1,4 @@
-package com.springboot.Locationmanagementapi;
+package com.springboot.Locationmanagementapi.constants;
 
 public enum ErrorType {
 AUTH_INVALID_CREDENTIALS,

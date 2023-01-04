@@ -1,7 +1,7 @@
 package com.springboot.Locationmanagementapi.validation;
 
 
-import com.springboot.Locationmanagementapi.ErrorType;
+import com.springboot.Locationmanagementapi.constants.ErrorType;
 import com.springboot.Locationmanagementapi.exceptions.ErrorModel;
 import com.springboot.Locationmanagementapi.model.UserModel;
 import org.springframework.stereotype.Component;

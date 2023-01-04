@@ -1,6 +1,6 @@
 package com.springboot.Locationmanagementapi.model;
 
-import jakarta.persistence.Column;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

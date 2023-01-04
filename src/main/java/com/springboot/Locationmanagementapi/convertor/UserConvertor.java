@@ -2,8 +2,10 @@ package com.springboot.Locationmanagementapi.convertor;
 
 import com.springboot.Locationmanagementapi.entity.UserEntity;
 import com.springboot.Locationmanagementapi.model.UserModel;
+import org.springframework.stereotype.Component;
 
-public class EntityToModel {
+@Component
+public class UserConvertor {
 
     public UserModel convertEntitytoModel(UserEntity userEntity){
 
@@ -17,4 +19,15 @@ public class EntityToModel {
 
     }
 
+    public UserEntity convertModelToEntity(UserModel userModel){
+
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail(userModel.getEmail());
+        userEntity.setPassword(userModel.getPassword());
+        userEntity.setFullName(userModel.getFullName());
+        userEntity.setPhoneNumber(userModel.getPhoneNumber());
+
+        return userEntity;
+
+    }
 }

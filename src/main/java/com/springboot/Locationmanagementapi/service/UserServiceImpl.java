@@ -1,7 +1,7 @@
 package com.springboot.Locationmanagementapi.service;
 
-import com.springboot.Locationmanagementapi.ErrorType;
-import com.springboot.Locationmanagementapi.convertor.ModelToEntity;
+import com.springboot.Locationmanagementapi.constants.ErrorType;
+import com.springboot.Locationmanagementapi.convertor.UserConvertor;
 import com.springboot.Locationmanagementapi.entity.UserEntity;
 import com.springboot.Locationmanagementapi.exceptions.BusinessException;
 import com.springboot.Locationmanagementapi.exceptions.ErrorModel;
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public Long register(UserModel userModel) throws BusinessException {
 
-        ModelToEntity modelToEntity = new ModelToEntity();
+        UserConvertor userConvertor=new UserConvertor();
         List<ErrorModel> errorModelList = userValidator.validateRequest(userModel);
 
         if (errorModelList != null && !errorModelList.isEmpty()) {
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService{
             errorModels.add(errorModel);
             throw new BusinessException(errorModels);
         } else {
-            UserEntity userEntity = modelToEntity.convertModelToEntity(userModel);
+            UserEntity userEntity = userConvertor.convertModelToEntity(userModel);
             UserEntity userEntity1 = userEntityRepository.save(userEntity);
             return userEntity1.getId();
         }
