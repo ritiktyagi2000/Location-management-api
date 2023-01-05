@@ -51,12 +51,10 @@ public class UserServiceImpl implements UserService{
     public Long register(UserModel userModel) throws BusinessException {
 
         List<ErrorModel> errorModelList = userValidator.validateRequest(userModel);
-
         if (errorModelList != null && !errorModelList.isEmpty()) {
             throw new BusinessException(errorModelList);
         }
         UserEntity entity = userEntityRepository.findByEmail(userModel.getEmail());
-
         if(entity!=null) {
             ErrorModel errorModel = new ErrorModel();
             errorModel.setCode(ErrorType.ALREADY_EXIST.toString());
@@ -70,7 +68,5 @@ public class UserServiceImpl implements UserService{
             return userEntity1.getId();
         }
     }
-
-
 }
 
