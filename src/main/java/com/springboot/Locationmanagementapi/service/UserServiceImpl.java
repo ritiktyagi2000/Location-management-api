@@ -21,6 +21,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserValidator userValidator;
 
+    @Autowired
+    UserConvertor userConvertor;
+
     @Override
     public Boolean login(UserModel userModel) throws BusinessException {
         List<ErrorModel> errorModelList = userValidator.validateRequest(userModel);
@@ -47,14 +50,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public Long register(UserModel userModel) throws BusinessException {
 
-        UserConvertor userConvertor=new UserConvertor();
         List<ErrorModel> errorModelList = userValidator.validateRequest(userModel);
 
         if (errorModelList != null && !errorModelList.isEmpty()) {
             throw new BusinessException(errorModelList);
         }
-        if (userEntityRepository.findByEmail(userModel.getEmail()) != null) {
+        UserEntity entity = userEntityRepository.findByEmail(userModel.getEmail());
 
+        if(entity!=null) {
             ErrorModel errorModel = new ErrorModel();
             errorModel.setCode(ErrorType.ALREADY_EXIST.toString());
             errorModel.setMessage("Email is already exist,Please try with another email");
